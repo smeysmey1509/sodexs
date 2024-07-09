@@ -17,7 +17,7 @@ import {
 
 const SocialShare = () => {
   const { menu_id, detail_page, detail_page_id } = useParams();
-  const shareUrl = `http://127.0.0.1:5173/${menu_id}/${detail_page}/${detail_page_id}`;
+  const shareUrl = `https://main--klebjeb.netlify.app/${menu_id}/${detail_page}/${detail_page_id}`;
   const title = "SODEXS";
   const quote = "Qoute";
   const description = "Your description here";
@@ -56,6 +56,7 @@ const SocialShare = () => {
           gap: "10px",
         }}
       >
+        <img src={image} alt="" />
         <FacebookShareButton url={shareUrl} hashtag={title} image={image}>
           <FacebookIcon size={32} round />
         </FacebookShareButton>
