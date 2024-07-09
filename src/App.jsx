@@ -7,7 +7,7 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         <Route
-          path="/:menu_id/:detail_page/:detail_page_id"
+          path=""
           element={<SocialShare />}
         />
       </Routes>
