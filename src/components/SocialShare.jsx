@@ -15,9 +15,9 @@ import {
 
 const SocialShare = () => {
   const { menu_id, detail_page, detail_page_id } = useParams();
-  const shareUrl = `https://sodexs.vercel.app/${menu_id}/${detail_page}/${detail_page_id}`;
+  const shareUrl = `https://sodexs.vercel.app`;
   const title = "SODEXS";
-  const description = "Your description here";
+  const description = "Your description here ah klebjeb";
   const image =
     "https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg";
 
@@ -32,7 +32,7 @@ const SocialShare = () => {
         padding: "20px",
       }}
     >
-      {/* <Helmet>
+      <Helmet>
         <title>{title}</title>
 
         <meta property="og:type" content="website" />
@@ -41,23 +41,13 @@ const SocialShare = () => {
         <meta property="og:description" content={description} />
         <meta property="og:image" content={image} />
 
+        {/* Twitter */}
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content={shareUrl} />
         <meta property="twitter:title" content={title} />
         <meta property="twitter:description" content={description} />
         <meta property="twitter:image" content={image} />
-      </Helmet> */}
-      <Helmet>
-        <title>{title}</title>
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={description} />
-        <meta property="og:image" content={image} />
-        <meta property="og:url" content={url} />
-        <meta property="og:type" content="website" />
       </Helmet>
-      <h1>{title}</h1>
-      <p>{description}</p>
-      <img src={image} alt="Example" />
       <Box
         sx={{
           display: "flex",
