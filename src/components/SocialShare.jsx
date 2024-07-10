@@ -1,16 +1,14 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
 import { Helmet } from "react-helmet";
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import {
   FacebookShareButton,
   LinkedinShareButton,
   TwitterShareButton,
-  WhatsappShareButton,
   FacebookIcon,
   LinkedinIcon,
   TwitterIcon,
-  WhatsappIcon,
   EmailShareButton,
   EmailIcon,
 } from "react-share";
@@ -18,8 +16,8 @@ import {
 const SocialShare = () => {
   const { menu_id, detail_page, detail_page_id } = useParams();
   const shareUrl = `https://sodexs.vercel.app`;
-  // const shareUrl = `https://main--klebjeb.netlify.app/${menu_id}/${detail_page}/${detail_page_id}`;
   const title = "SODEXS";
+  const description = "Your description here"; // Add a description
   const image =
     "https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg";
 
@@ -36,25 +34,19 @@ const SocialShare = () => {
     >
       <Helmet>
         <title>{title}</title>
-        {/* <!-- Open Graph / Facebook --> */}
+        {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://sodexs.vercel.app" />
-        <meta property="og:title" content="SODEX" />
-        <meta property="og:description" content="" />
-        <meta
-          property="og:image"
-          content="https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg"
-        />
+        <meta property="og:url" content={shareUrl} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content={image} />
 
-        {/* <!-- Twitter --> */}
+        {/* Twitter */}
         <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content="https://sodexs.vercel.app" />
-        <meta property="twitter:title" content="SODEX" />
-        <meta property="twitter:description" content="" />
-        <meta
-          property="twitter:image"
-          content="https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg"
-        />
+        <meta property="twitter:url" content={shareUrl} />
+        <meta property="twitter:title" content={title} />
+        <meta property="twitter:description" content={description} />
+        <meta property="twitter:image" content={image} />
       </Helmet>
       <Box
         sx={{
@@ -63,7 +55,7 @@ const SocialShare = () => {
           gap: "10px",
         }}
       >
-        <FacebookShareButton url={shareUrl} hashtag={title} media={image}>
+        <FacebookShareButton url={shareUrl} quote={description} hashtag={title}>
           <FacebookIcon size={32} round />
         </FacebookShareButton>
 
@@ -71,16 +63,11 @@ const SocialShare = () => {
           <TwitterIcon size={32} round />
         </TwitterShareButton>
 
-        <LinkedinShareButton
-          url={shareUrl}
-          title={title}
-          summary="Check out this link!"
-          source={shareUrl}
-        >
+        <LinkedinShareButton url={shareUrl} title={title} summary={description}>
           <LinkedinIcon size={32} round />
         </LinkedinShareButton>
 
-        <EmailShareButton url={shareUrl} title={title}>
+        <EmailShareButton url={shareUrl} subject={title} body={description}>
           <EmailIcon size={32} round />
         </EmailShareButton>
       </Box>
