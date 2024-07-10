@@ -6,10 +6,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route
-          path="/"
-          element={<SocialShare />}
-        />
+        <Route path="/" element={<SocialShare />} />
       </Routes>
     </BrowserRouter>
   );
