@@ -12,14 +12,15 @@ import {
   EmailShareButton,
   EmailIcon,
 } from "react-share";
+import image from '../assets/asd.webp'
 
 const SocialShare = () => {
   const { menu_id, detail_page, detail_page_id } = useParams();
   const shareUrl = `https://sodexs.vercel.app`;
   const title = "SODEXS";
   const description = "Your description here ah klebjeb";
-  const image =
-    "https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg";
+  // const image =
+  //   "https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg";
 
   return (
     <Box
@@ -46,7 +47,7 @@ const SocialShare = () => {
         <meta property="twitter:url" content={shareUrl} />
         <meta property="twitter:title" content={title} />
         <meta property="twitter:description" content={description} />
-        <meta property="twitter:image" content={image} />
+        <meta property="twitter:image" content={'https://sodexs.vercel.app' + image} />
       </Helmet>
       <Box
         sx={{
