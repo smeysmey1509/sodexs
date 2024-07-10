@@ -45,8 +45,6 @@ const Detail = () => {
   const title = detailData.title;
   const description = detailData.description;
 
-  console.log(detailData.image)
-
   return (
     <>
       <Helmet>
