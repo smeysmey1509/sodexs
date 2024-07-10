@@ -12,7 +12,7 @@ import {
   EmailShareButton,
   EmailIcon,
 } from "react-share";
-import image from '../assets/asd.webp'
+import image from "../assets/react.svg";
 
 const SocialShare = () => {
   const { menu_id, detail_page, detail_page_id } = useParams();
@@ -47,7 +47,7 @@ const SocialShare = () => {
         <meta property="twitter:url" content={shareUrl} />
         <meta property="twitter:title" content={title} />
         <meta property="twitter:description" content={description} />
-        <meta property="twitter:image" content={'https://sodexs.vercel.app' + image} />
+        <meta property="twitter:image" content={image} />
       </Helmet>
       <Box
         sx={{
