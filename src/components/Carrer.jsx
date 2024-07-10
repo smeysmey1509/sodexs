@@ -8,6 +8,8 @@ import { Helmet } from "react-helmet";
 
 const Carrer = () => {
   const shareUrl = `http://127.0.0.1:5173/carrer`;
+  const image =
+    "https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg";
 
   console.log("carrer", shareUrl);
 
@@ -19,10 +21,7 @@ const Carrer = () => {
         <meta property="og:url" content={shareUrl} />
         <meta property="og:title" content="Title" />
         <meta property="og:description" content={"description"} />
-        <meta
-          property="og:image"
-          content="https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg"
-        />
+        <meta property="og:image" content={image} />
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content={shareUrl} />
         <meta property="twitter:title" content={"title"} />
