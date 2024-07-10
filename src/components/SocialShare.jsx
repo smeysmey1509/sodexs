@@ -13,9 +13,9 @@ import {
   EmailIcon,
 } from "react-share";
 
-const SocialShare = ({ world }) => {
+const SocialShare = () => {
   const { menu_id, detail_page, detail_page_id } = useParams();
-  const shareUrl = `${menu_id}/${detail_page}/${detail_page_id}`;
+  const shareUrl = `https://sodexs.vercel.app/`;
   const title = "SODEXS";
   const description = "Your description here ah klebjeb";
   const image =
