@@ -13,30 +13,13 @@ import {
   EmailIcon,
 } from "react-share";
 
-const SocialShare = () => {
+const SocialShare = ({ world }) => {
   const { menu_id, detail_page, detail_page_id } = useParams();
   const shareUrl = `https://sodexs.vercel.app`;
   const title = "SODEXS";
   const description = "Your description here ah klebjeb";
   const image =
     "https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg";
-
-  <Helmet>
-    <title>{title}</title>
-
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content={shareUrl} />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:image" content={image} />
-
-    {/* Twitter */}
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content={shareUrl} />
-    <meta property="twitter:title" content={title} />
-    <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content={image} />
-  </Helmet>;
 
   return (
     <Box
@@ -49,6 +32,21 @@ const SocialShare = () => {
         padding: "20px",
       }}
     >
+      <Helmet>
+        <title>{title}</title>
+
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={shareUrl} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content={image} />
+
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content={shareUrl} />
+        <meta property="twitter:title" content={title} />
+        <meta property="twitter:description" content={description} />
+        <meta property="twitter:image" content={image} />
+      </Helmet>
       <Box
         sx={{
           display: "flex",
@@ -56,11 +54,7 @@ const SocialShare = () => {
           gap: "10px",
         }}
       >
-        <FacebookShareButton
-          url={shareUrl}
-          quote={description}
-          hashtag={`#${title}`}
-        >
+        <FacebookShareButton url={shareUrl} quote={description} hashtag={title}>
           <FacebookIcon size={32} round />
         </FacebookShareButton>
 
