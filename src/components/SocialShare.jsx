@@ -15,9 +15,9 @@ import {
 
 const SocialShare = () => {
   const { menu_id, detail_page, detail_page_id } = useParams();
-  const shareUrl = `https://sodexs.vercel.app`;
+  const shareUrl = `https://sodexs.vercel.app/${menu_id}/${detail_page}/${detail_page_id}`;
   const title = "SODEXS";
-  const description = "Your description here"; // Add a description
+  const description = "Your description here";
   const image =
     "https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg";
 
@@ -55,7 +55,11 @@ const SocialShare = () => {
           gap: "10px",
         }}
       >
-        <FacebookShareButton url={shareUrl} quote={description} hashtag={title}>
+        <FacebookShareButton
+          url={shareUrl}
+          quote={description}
+          hashtag={title}
+        >
           <FacebookIcon size={32} round />
         </FacebookShareButton>
 
