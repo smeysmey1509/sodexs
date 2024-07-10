@@ -15,7 +15,7 @@ import {
 
 const SocialShare = ({ world }) => {
   const { menu_id, detail_page, detail_page_id } = useParams();
-  const shareUrl = `https://sodexs.vercel.app`;
+  const shareUrl = `${menu_id}/${detail_page}/${detail_page_id}`;
   const title = "SODEXS";
   const description = "Your description here ah klebjeb";
   const image =
