@@ -17,7 +17,7 @@ import {
 
 const SocialShare = () => {
   const { menu_id, detail_page, detail_page_id } = useParams();
-  const shareUrl = `https://main--klebjeb.netlify.app`;
+  const shareUrl = `https://sodexs.vercel.app`;
   // const shareUrl = `https://main--klebjeb.netlify.app/${menu_id}/${detail_page}/${detail_page_id}`;
   const title = "SODEXS";
   const image =
@@ -38,20 +38,23 @@ const SocialShare = () => {
         <title>{title}</title>
         {/* <!-- Open Graph / Facebook --> */}
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://main--klebjeb.netlify.app/" />
+        <meta property="og:url" content="https://sodexs.vercel.app" />
         <meta property="og:title" content="SODEX" />
         <meta property="og:description" content="" />
-        <meta property="og:image" content={image} />
+        <meta
+          property="og:image"
+          content="https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg"
+        />
 
         {/* <!-- Twitter --> */}
         <meta property="twitter:card" content="summary_large_image" />
-        <meta
-          property="twitter:url"
-          content="https://main--klebjeb.netlify.app/"
-        />
+        <meta property="twitter:url" content="https://sodexs.vercel.app" />
         <meta property="twitter:title" content="SODEX" />
         <meta property="twitter:description" content="" />
-        <meta property="twitter:image" content={image} />
+        <meta
+          property="twitter:image"
+          content="https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg"
+        />
       </Helmet>
       <Box
         sx={{
