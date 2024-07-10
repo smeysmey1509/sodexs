@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { Box } from "@mui/material";
@@ -15,11 +15,16 @@ import {
 
 const SocialShare = () => {
   const { menu_id, detail_page, detail_page_id } = useParams();
-  const shareUrl = `https://sodexs.vercel.app/`;
+  const shareUrl = `http://127.0.0.1:5173/${menu_id}/${detail_page}/${detail_page_id}`;
+
+  console.log("shareUrl", shareUrl);
+
   const title = "SODEXS";
   const description = "Your description here ah klebjeb";
   const image =
     "https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg";
+
+  console.log(shareUrl);
 
   return (
     <Box
@@ -32,6 +37,25 @@ const SocialShare = () => {
         padding: "20px",
       }}
     >
+      <Helmet>
+        <title>Kleb Jeb</title>
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={shareUrl} />
+        <meta property="og:title" content="Title" />
+        <meta property="og:description" content={description} />
+        <meta
+          property="og:image"
+          content="https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg"
+        />
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content={shareUrl} />
+        <meta property="twitter:title" content={title} />
+        <meta property="twitter:description" content={description} />
+        <meta
+          property="twitter:image"
+          content="https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg"
+        />
+      </Helmet>
       <Box
         sx={{
           display: "flex",
