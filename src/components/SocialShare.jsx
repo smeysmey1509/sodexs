@@ -17,7 +17,8 @@ import {
 
 const SocialShare = () => {
   const { menu_id, detail_page, detail_page_id } = useParams();
-  const shareUrl = `https://main--klebjeb.netlify.app/${menu_id}/${detail_page}/${detail_page_id}`;
+  const shareUrl = `https://main--klebjeb.netlify.app`;
+  // const shareUrl = `https://main--klebjeb.netlify.app/${menu_id}/${detail_page}/${detail_page_id}`;
   const title = "SODEXS";
   const quote = "Qoute";
   const description = "Your description here";
@@ -37,17 +38,22 @@ const SocialShare = () => {
     >
       <Helmet>
         <title>{title}</title>
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={description} />
+        {/* <!-- Open Graph / Facebook --> */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://main--klebjeb.netlify.app/" />
+        <meta property="og:title" content="SODEX" />
+        <meta property="og:description" content="" />
         <meta property="og:image" content={image} />
-        <meta property="og:url" content={shareUrl} />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={title} />
+
+        {/* <!-- Twitter --> */}
+        <meta property="twitter:card" content="summary_large_image" />
         <meta
-          name="twitter:description"
-          content="A brief description of your page"
+          property="twitter:url"
+          content="https://main--klebjeb.netlify.app/"
         />
-        <meta name="twitter:image" content={image} />
+        <meta property="twitter:title" content="SODEX" />
+        <meta property="twitter:description" content="" />
+        <meta property="twitter:image" content={image} />
       </Helmet>
       <Box
         sx={{
@@ -56,8 +62,7 @@ const SocialShare = () => {
           gap: "10px",
         }}
       >
-        <img src={image} alt="" />
-        <FacebookShareButton url={shareUrl} hashtag={title} image={image}>
+        <FacebookShareButton url={shareUrl} hashtag={title} media={image}>
           <FacebookIcon size={32} round />
         </FacebookShareButton>
 
