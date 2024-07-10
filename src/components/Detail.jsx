@@ -45,6 +45,8 @@ const Detail = () => {
   const title = detailData.title;
   const description = detailData.description;
 
+  console.log(detailData.image)
+
   return (
     <>
       <Helmet>
@@ -54,14 +56,14 @@ const Detail = () => {
         <meta property="og:url" content={shareUrl} />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
-        <meta property="og:image" content={detailData.image} />
+        <meta property="og:image" content={detailData.image} /> 
 
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content={shareUrl} />
         <meta property="twitter:title" content={title} />
         <meta property="twitter:description" content={description} />
         <meta property="twitter:image" content={detailData.image} />
-        
+
       </Helmet>
       <div className="flex flex-col items-center justify-center border p-4">
         <h2 className="text-lg font-medium">{title}</h2>
