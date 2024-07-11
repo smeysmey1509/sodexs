@@ -39,15 +39,13 @@ const SocialShare = () => {
     >
       <Helmet>
         <title>Kleb Jeb</title>
-        <meta property="og:type" content="website" />
         <meta property="og:url" content={shareUrl} />
-        <meta property="og:title" content="Hello" />
+        <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta
           property="og:image"
           content="https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg"
         />
-        <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content={shareUrl} />
         <meta property="twitter:title" content={title} />
         <meta property="twitter:description" content={description} />

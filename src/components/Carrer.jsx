@@ -23,13 +23,15 @@ const Carrer = () => {
   }, []);
 
   const splitString = (str) => {
-    const cleanedString = str.replace(/,/g, ""); // Remove all commas
-    const splitResult = cleanedString
-      .split(/[\s!@#$%^&*()_+\-=\[\]{};':"\\|<>\/?.]+/) // Remove other special characters
-      .filter((item) => item) // Remove any empty strings
-      .map((item) => item.toLowerCase()); // Convert each word to lowercase
+    const cleanedString = str
+      .replace(/[!@#$%^&*()_+\-=\[\]{};':"\\|<>\/?,.]+/g, "-") // Replace special characters with hyphens
+      .toLowerCase(); // Convert to lowercase
 
-    return splitResult;
+    const splitResult = cleanedString
+      .split(/\s+/) // Split by spaces
+      .filter((item) => item); // Remove any empty strings
+
+    return splitResult.join("-"); // Join with hyphens
   };
 
   return (

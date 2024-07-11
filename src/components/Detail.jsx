@@ -24,7 +24,7 @@ const Detail = () => {
   const shareUrl = window.location.href;
   const title = item.title;
   const description = item.description;
-  const image = item.image || "https://via.placeholder.com/150"; // Use a placeholder if the image is not available
+  const image = item.image || "https://via.placeholder.com/150";
 
   return (
     <>
