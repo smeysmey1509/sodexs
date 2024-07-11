@@ -1,6 +1,7 @@
+// Detail.jsx
 import React from "react";
 import { useParams } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
+import { Helmet } from "react-helmet";
 import { Box } from "@mui/material";
 import {
   FacebookShareButton,
@@ -43,9 +44,8 @@ const Detail = () => {
     return <div>Detail not found</div>;
   }
 
-  const shareUrl = window.location.href;
-  const title = detailData.title;
-  const description = detailData.description;
+  const shareUrl = `https://klebjeb.vercel.app/carrer/${detail}`;
+  const { title, description, image } = detailData;
 
   return (
     <>
@@ -55,20 +55,25 @@ const Detail = () => {
         <meta property="og:url" content={shareUrl} />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
-        <meta property="og:image" content={detailData.image} />
-
+        <meta property="og:image" content={image} />
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content={shareUrl} />
         <meta property="twitter:title" content={title} />
         <meta property="twitter:description" content={description} />
-        <meta property="twitter:image" content={detailData.image} />
+        <meta property="twitter:image" content={image} />
       </Helmet>
       <div className="flex flex-col items-center justify-center border p-4">
         <h2 className="text-lg font-medium">{title}</h2>
         <p className="text-gray-700">{description}</p>
-        <img src={detailData.image} alt={title} />
+        <img src={image} alt={title} />
       </div>
-      <Box sx={{ display: "flex", justifyContent: "center", gap: "10px" }}>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          gap: "10px",
+        }}
+      >
         <FacebookShareButton
           url={shareUrl}
           quote={description}
@@ -76,12 +81,15 @@ const Detail = () => {
         >
           <FacebookIcon size={32} round />
         </FacebookShareButton>
+
         <TwitterShareButton url={shareUrl} title={title}>
           <TwitterIcon size={32} round />
         </TwitterShareButton>
+
         <LinkedinShareButton url={shareUrl} title={title} summary={description}>
           <LinkedinIcon size={32} round />
         </LinkedinShareButton>
+
         <EmailShareButton url={shareUrl} subject={title} body={description}>
           <EmailIcon size={32} round />
         </EmailShareButton>
