@@ -45,6 +45,8 @@ const Detail = () => {
   const title = detailData.title;
   const description = detailData.description;
 
+  console.log(shareUrl);
+
   return (
     <>
       <Helmet>
