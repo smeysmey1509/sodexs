@@ -15,7 +15,7 @@ import {
 
 const SocialShare = () => {
   const { menu_id, detail_page, detail_page_id } = useParams();
-  const shareUrl = `http://127.0.0.1:5173/${menu_id}/${detail_page}/${detail_page_id}`;
+  const shareUrl = `${window.location}/${menu_id}/${detail_page}/${detail_page_id}`;
 
   console.log("shareUrl", shareUrl);
 
@@ -23,8 +23,6 @@ const SocialShare = () => {
   const description = "Your description here ah klebjeb";
   const image =
     "https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg";
-
-  console.log(shareUrl);
 
   return (
     <Box

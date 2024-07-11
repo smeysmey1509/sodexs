@@ -26,13 +26,15 @@ const Detail = () => {
   const description = item.description;
   const image = item.image || "https://via.placeholder.com/150";
 
+  console.log(shareUrl);
+
   return (
     <>
       <Helmet>
         <title>{title}</title>
         <meta property="og:type" content="website" />
         <meta property="og:url" content={shareUrl} />
-        <meta property="og:title" content={title} />
+        <meta property="og:title" content='title' />
         <meta property="og:description" content={description} />
         <meta property="og:image" content={image} />
 
@@ -43,9 +45,9 @@ const Detail = () => {
         <meta property="twitter:image" content={image} />
       </Helmet>
       <div className="flex flex-col items-center justify-center border p-4">
-        <h2 className="text-lg font-medium">{title}</h2>
+        <h2 className="text-lg font-medium text-black">{title}</h2>
         <p className="text-gray-700">{description}</p>
-        <img src={image} alt={title} />
+        <img src={image} alt={title} className="w-50 h-80"/>
       </div>
       <Box sx={{ display: "flex", justifyContent: "center", gap: "10px" }}>
         <FacebookShareButton
