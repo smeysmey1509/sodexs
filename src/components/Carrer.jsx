@@ -1,15 +1,36 @@
-// Carrer.jsx
-
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import SocialShare from "./SocialShare";
 import asd from "../assets/asd.webp";
+import axios from "axios";
 
 const Carrer = () => {
+  const [data, setData] = useState([]);
   const shareUrl = `http://127.0.0.1:5173/carrer`;
   const image =
     "https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg";
+
+  const fetchData = () => {
+    axios
+      .get("https://fakestoreapi.com/products")
+      .then((res) => setData(res.data))
+      .catch((err) => console.error(err));
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const splitString = (str) => {
+    const cleanedString = str.replace(/,/g, ""); // Remove all commas
+    const splitResult = cleanedString
+      .split(/[\s!@#$%^&*()_+\-=\[\]{};':"\\|<>\/?.]+/) // Remove other special characters
+      .filter((item) => item) // Remove any empty strings
+      .map((item) => item.toLowerCase()); // Convert each word to lowercase
+
+    return splitResult;
+  };
 
   return (
     <>
@@ -29,36 +50,19 @@ const Carrer = () => {
       <div className="flex flex-col gap-4 items-center justify-center border">
         <h2 className="p-4 border">Welcome to Carrer</h2>
         <SocialShare />
-        <Link to="/carrer/threejs" className="w-full border">
-          <div className="bg-white rounded-lg shadow-md p-4 cursor-pointer">
-            <p className="text-lg font-medium">Three.js</p>
-            <p className="text-gray-700">
-              Three.js is a cross-browser JavaScript library and application
-              programming interface (API) used to create and display animated 3D
-              computer graphics in a web browser using WebGL.
-            </p>
-          </div>
-        </Link>
-        <Link to="/carrer/reactjs" className="w-full border">
-          <div className="bg-white rounded-lg shadow-md p-4 cursor-pointer">
-            <p className="text-lg font-medium">React.js</p>
-            <p className="text-gray-700">
-              React.js is a JavaScript library for building user interfaces. It
-              lets you compose complex UIs from small and isolated pieces of
-              code called "components".
-            </p>
-          </div>
-        </Link>
-        <Link to="/carrer/vuejs" className="w-full border">
-          <div className="bg-white rounded-lg shadow-md p-4 cursor-pointer">
-            <p className="text-lg font-medium">Vue.js</p>
-            <p className="text-gray-700">
-              Vue.js is a progressive JavaScript framework used for building
-              user interfaces. It is designed from the ground up to be
-              incrementally adoptable.
-            </p>
-          </div>
-        </Link>
+        {data.map((item, index) => (
+          <Link
+            key={index}
+            to={`/carrer/${splitString(item.title)}`}
+            state={{ item }}
+            className="w-full border"
+          >
+            <div className="bg-white rounded-lg shadow-md p-4 cursor-pointer">
+              <p className="text-lg font-medium">{item.title}</p>
+              <p className="text-gray-700">{item.description}</p>
+            </div>
+          </Link>
+        ))}
         <img src={asd} alt="" />
       </div>
     </>

@@ -41,7 +41,7 @@ const SocialShare = () => {
         <title>Kleb Jeb</title>
         <meta property="og:type" content="website" />
         <meta property="og:url" content={shareUrl} />
-        <meta property="og:title" content="Title" />
+        <meta property="og:title" content="Hello" />
         <meta property="og:description" content={description} />
         <meta
           property="og:image"
