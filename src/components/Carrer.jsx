@@ -1,17 +1,15 @@
-// Carrer.js
+// Carrer.jsx
 
 import React from "react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import SocialShare from "./SocialShare";
 import asd from "../assets/asd.webp";
-import { Helmet } from "react-helmet";
 
 const Carrer = () => {
   const shareUrl = `http://127.0.0.1:5173/carrer`;
   const image =
     "https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg";
-
-  console.log("carrer", shareUrl);
 
   return (
     <>
@@ -26,15 +24,11 @@ const Carrer = () => {
         <meta property="twitter:url" content={shareUrl} />
         <meta property="twitter:title" content={"title"} />
         <meta property="twitter:description" content={"description"} />
-        <meta
-          property="twitter:image"
-          content="https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg"
-        />
+        <meta property="twitter:image" content={image} />
       </Helmet>
       <div className="flex flex-col gap-4 items-center justify-center border">
         <h2 className="p-4 border">Welcome to Carrer</h2>
         <SocialShare />
-        {/* Three.js Detail Link */}
         <Link to="/carrer/threejs" className="w-full border">
           <div className="bg-white rounded-lg shadow-md p-4 cursor-pointer">
             <p className="text-lg font-medium">Three.js</p>
@@ -45,8 +39,6 @@ const Carrer = () => {
             </p>
           </div>
         </Link>
-
-        {/* React.js Detail Link */}
         <Link to="/carrer/reactjs" className="w-full border">
           <div className="bg-white rounded-lg shadow-md p-4 cursor-pointer">
             <p className="text-lg font-medium">React.js</p>
@@ -57,8 +49,6 @@ const Carrer = () => {
             </p>
           </div>
         </Link>
-
-        {/* Vue.js Detail Link */}
         <Link to="/carrer/vuejs" className="w-full border">
           <div className="bg-white rounded-lg shadow-md p-4 cursor-pointer">
             <p className="text-lg font-medium">Vue.js</p>
@@ -69,7 +59,6 @@ const Carrer = () => {
             </p>
           </div>
         </Link>
-
         <img src={asd} alt="" />
       </div>
     </>
