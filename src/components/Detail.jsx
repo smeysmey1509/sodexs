@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { Box } from "@mui/material";
@@ -17,6 +17,8 @@ const Detail = () => {
   const location = useLocation();
   const item = location.state?.item;
 
+  console.log(location)
+
   if (!item) {
     return <div>Loading...</div>;
   }
@@ -34,7 +36,7 @@ const Detail = () => {
         <title>{title}</title>
         <meta property="og:type" content="website" />
         <meta property="og:url" content={shareUrl} />
-        <meta property="og:title" content='title' />
+        <meta property="og:title" content="title" />
         <meta property="og:description" content={description} />
         <meta property="og:image" content={image} />
 
@@ -47,7 +49,7 @@ const Detail = () => {
       <div className="flex flex-col items-center justify-center border p-4">
         <h2 className="text-lg font-medium text-black">{title}</h2>
         <p className="text-gray-700">{description}</p>
-        <img src={image} alt={title} className="w-50 h-80"/>
+        <img src={image} alt={title} className="w-50 h-80" />
       </div>
       <Box sx={{ display: "flex", justifyContent: "center", gap: "10px" }}>
         <FacebookShareButton

@@ -13,6 +13,7 @@ const Carrer = () => {
       try {
         const response = await axios.get("https://fakestoreapi.com/products");
         setData(response.data);
+        console.log(response);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -35,11 +36,13 @@ const Carrer = () => {
     <>
       <Helmet>
         <title>Kleb Jeb</title>
+
         <meta property="og:type" content="website" />
         <meta property="og:url" content={window.location.href} />
         <meta property="og:title" content="Title" />
         <meta property="og:description" content={"description"} />
         <meta property="og:image" content={"asd"} />
+
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content={window.location.href} />
         <meta property="twitter:title" content={"title"} />
