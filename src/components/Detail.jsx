@@ -54,7 +54,11 @@ const Detail = () => {
         <p className="text-gray-700">{description}</p>
         <img src={image} alt={title} className="w-50 h-80" />
       </div>
-      <SocialShare shareUrl={shareUrl} shareQuote={title} shareHashtag={title}/>
+      <SocialShare
+        shareUrl={shareUrl}
+        shareQuote={title}
+        shareHashtag={title}
+      />
     </>
   );
 };

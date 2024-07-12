@@ -36,11 +36,11 @@ const Carrer = () => {
   return (
     <>
       <Helmet>
-        <title>Kleb Jeb</title>
+        <title>Carrer</title>
         <meta property="og:type" content="website" />
         <meta property="og:url" content={window.location.href} />
-        <meta property="og:title" content="Title" />
-        <meta property="og:description" content={"description"} />
+        <meta property="og:title" content="Carrer"/>
+        <meta property="og:description" content="description" />
         <meta property="og:image" content={asd} />
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content={window.location.href} />
