@@ -31,21 +31,25 @@ const Carrer = () => {
     return splitResult.join("-");
   };
 
-  console.log("carrer", window.location.href);
-
   return (
     <>
       <Helmet>
-        <title>Carrer</title>
+        <title>Career</title>
         <meta property="og:type" content="website" />
         <meta property="og:url" content={window.location.href} />
-        <meta property="og:title" content="Carrer" />
-        <meta property="og:description" content="description" />
+        <meta property="og:title" content="Career" />
+        <meta
+          property="og:description"
+          content="Description of the career page"
+        />
         <meta property="og:image" content={asd} />
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content={window.location.href} />
-        <meta property="twitter:title" content={"title"} />
-        <meta property="twitter:description" content={"description"} />
+        <meta property="twitter:title" content="Career" />
+        <meta
+          property="twitter:description"
+          content="Description of the career page"
+        />
         <meta property="twitter:image" content={asd} />
       </Helmet>
       <div className="flex flex-col gap-4 items-center justify-center border">

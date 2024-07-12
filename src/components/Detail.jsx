@@ -32,18 +32,18 @@ const Detail = () => {
   const description = data.description;
   const image = data.image || "https://via.placeholder.com/150";
 
-  console.log("detail", title);
+  console.log('image', image)
 
   return (
     <>
       <Helmet>
         <title>{title}</title>
-        <meta property="og:type" content="Webpage" />
+        <meta property="og:type" content="website" />
         <meta property="og:url" content={shareUrl} />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:image" content={image} />
-        <meta property="twitter:card" content="Card" />
+        <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content={shareUrl} />
         <meta property="twitter:title" content={title} />
         <meta property="twitter:description" content={description} />
