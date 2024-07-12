@@ -14,7 +14,7 @@ import {
 const SocialShare = ({
   shareUrl,
   shareQuote,
-  shareHashtag, 
+  shareHashtag,
   shareTitle,
   shareBody,
   shareDescription,
@@ -114,4 +114,3 @@ export default SocialShare;
 // };
 
 // export default SocialShare;
-
