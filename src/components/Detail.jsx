@@ -6,6 +6,20 @@ import axios from "axios";
 import SocialShare from "./SocialShare";
 import Meta from "./Meta";
 
+const updateMetaTags = (title, description) => {
+  document.title = title;
+
+  const metaDescription = document.querySelector('meta[name="description"]');
+  if (metaDescription) {
+    metaDescription.setAttribute("content", description);
+  } else {
+    const metaTag = document.createElement("meta");
+    metaTag.name = "description";
+    metaTag.content = description;
+    document.head.appendChild(metaTag);
+  }
+};
+
 const Detail = () => {
   const [data, setData] = useState(null);
   const { id } = useParams();
@@ -17,6 +31,7 @@ const Detail = () => {
           `https://fakestoreapi.com/products/${id}`
         );
         setData(response.data);
+        updateMetaTags(response?.data?.title, response?.data?.description, response?.data?.image);
       } catch (error) {
         console.error("Error fetching data:", error);
       }

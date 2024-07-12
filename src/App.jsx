@@ -1,7 +1,7 @@
 import React, { lazy, Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { HelmetProvider } from "react-helmet-async";
 
+const ShowRenderedHTML = lazy(() => import("./components/ShowRenderedHTML"));
 const Home = lazy(() => import("./components/Home"));
 const Carrer = lazy(() => import("./components/Carrer"));
 const About = lazy(() => import("./components/About"));
@@ -9,7 +9,7 @@ const Detail = lazy(() => import("./components/Detail"));
 
 const App = () => {
   return (
-    <HelmetProvider>
+    <ShowRenderedHTML>
       <Router>
         <Suspense
           fallback={
@@ -26,7 +26,7 @@ const App = () => {
           </Routes>
         </Suspense>
       </Router>
-    </HelmetProvider>
+    </ShowRenderedHTML>
   );
 };
 
