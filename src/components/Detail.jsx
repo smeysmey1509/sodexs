@@ -1,3 +1,4 @@
+// Detail.js
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
@@ -31,8 +32,6 @@ const Detail = () => {
   const title = data.title;
   const description = data.description;
   const image = data.image || "https://via.placeholder.com/150";
-
-  console.log('image', image)
 
   return (
     <>
