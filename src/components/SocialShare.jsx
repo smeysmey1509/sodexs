@@ -32,17 +32,6 @@ const SocialShare = ({
         padding: "20px",
       }}
     >
-      <Helmet>
-        <title>Kleb Jeb</title>
-        <meta property="og:url" content={shareUrl} />
-        <meta property="og:title" content={shareTitle} />
-        <meta property="og:description" content={shareDescription} />
-        <meta property="og:image" content={shareImage} />
-        <meta property="twitter:url" content={shareUrl} />
-        <meta property="twitter:title" content={shareTitle} />
-        <meta property="twitter:description" content={shareDescription} />
-        <meta property="twitter:image" content={shareImage} />
-      </Helmet>
       <Box
         sx={{
           display: "flex",
