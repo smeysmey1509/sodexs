@@ -13,7 +13,6 @@ const Carrer = () => {
       try {
         const response = await axios.get("https://fakestoreapi.com/products");
         setData(response.data);
-        console.log(response);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -32,30 +31,30 @@ const Carrer = () => {
     return splitResult.join("-");
   };
 
+  console.log("carrer", window.location.href);
+
   return (
     <>
       <Helmet>
         <title>Kleb Jeb</title>
-
         <meta property="og:type" content="website" />
         <meta property="og:url" content={window.location.href} />
         <meta property="og:title" content="Title" />
         <meta property="og:description" content={"description"} />
-        <meta property="og:image" content={"asd"} />
-
+        <meta property="og:image" content={asd} />
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content={window.location.href} />
         <meta property="twitter:title" content={"title"} />
         <meta property="twitter:description" content={"description"} />
-        <meta property="twitter:image" content={"asd"} />
+        <meta property="twitter:image" content={asd} />
       </Helmet>
       <div className="flex flex-col gap-4 items-center justify-center border">
         <h2 className="p-4 border">Welcome to Career</h2>
-        <SocialShare />
+        <SocialShare shareUrl={window.location.href} />
         {data?.map((item, index) => (
           <Link
             key={index}
-            to={`/carrer/${splitString(item.title)}`}
+            to={`/carrer/${item.id}`}
             state={{ item }}
             className="w-full border"
           >
@@ -65,7 +64,7 @@ const Carrer = () => {
             </div>
           </Link>
         ))}
-        <img src={asd} alt="" />
+        <img src={asd} alt="Career" />
       </div>
     </>
   );

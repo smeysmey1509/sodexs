@@ -1,34 +1,38 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import { Box } from "@mui/material";
-import {
-  FacebookShareButton,
-  LinkedinShareButton,
-  TwitterShareButton,
-  FacebookIcon,
-  LinkedinIcon,
-  TwitterIcon,
-  EmailShareButton,
-  EmailIcon,
-} from "react-share";
+import axios from "axios";
+import SocialShare from "./SocialShare";
 
 const Detail = () => {
-  const location = useLocation();
-  const item = location.state?.item;
+  const [data, setData] = useState(null);
+  const { id } = useParams();
 
-  console.log(location)
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `https://fakestoreapi.com/products/${id}`
+        );
+        setData(response.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
 
-  if (!item) {
+    fetchData();
+  }, [id]);
+
+  if (!data) {
     return <div>Loading...</div>;
   }
 
   const shareUrl = window.location.href;
-  const title = item.title;
-  const description = item.description;
-  const image = item.image || "https://via.placeholder.com/150";
+  const title = data.title;
+  const description = data.description;
+  const image = data.image || "https://via.placeholder.com/150";
 
-  console.log(shareUrl);
+  console.log("detail", shareUrl);
 
   return (
     <>
@@ -36,10 +40,9 @@ const Detail = () => {
         <title>{title}</title>
         <meta property="og:type" content="website" />
         <meta property="og:url" content={shareUrl} />
-        <meta property="og:title" content="title" />
+        <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:image" content={image} />
-
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content={shareUrl} />
         <meta property="twitter:title" content={title} />
@@ -51,24 +54,7 @@ const Detail = () => {
         <p className="text-gray-700">{description}</p>
         <img src={image} alt={title} className="w-50 h-80" />
       </div>
-      <Box sx={{ display: "flex", justifyContent: "center", gap: "10px" }}>
-        <FacebookShareButton
-          url={shareUrl}
-          quote={description}
-          hashtag={`#${title}`}
-        >
-          <FacebookIcon size={32} round />
-        </FacebookShareButton>
-        <TwitterShareButton url={shareUrl} title={title}>
-          <TwitterIcon size={32} round />
-        </TwitterShareButton>
-        <LinkedinShareButton url={shareUrl} title={title} summary={description}>
-          <LinkedinIcon size={32} round />
-        </LinkedinShareButton>
-        <EmailShareButton url={shareUrl} subject={title} body={description}>
-          <EmailIcon size={32} round />
-        </EmailShareButton>
-      </Box>
+      <SocialShare shareUrl={shareUrl} shareQuote={title} shareHashtag={title}/>
     </>
   );
 };

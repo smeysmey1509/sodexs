@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import React from "react";
 import { Helmet } from "react-helmet";
 import { Box } from "@mui/material";
 import {
@@ -13,19 +12,15 @@ import {
   EmailIcon,
 } from "react-share";
 
-const SocialShare = () => {
-  const { menu_id, detail_page, detail_page_id } = useParams();
-  const shareUrl = `${window.location}/${menu_id}/${detail_page}/${detail_page_id}`;
-
-  console.log("shareUrl", shareUrl);
-
-  const title = "SODEXS";
-  const description = "Your description here ah klebjeb";
-  const image =
-    "https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg";
-
-  console.log("shareUrlshareUrl", shareUrl);
-
+const SocialShare = ({
+  shareUrl,
+  shareQuote,
+  shareHashtag,
+  shareTitle,
+  shareBody,
+  shareDescription,
+  shareImage,
+}) => {
   return (
     <Box
       sx={{
@@ -40,19 +35,13 @@ const SocialShare = () => {
       <Helmet>
         <title>Kleb Jeb</title>
         <meta property="og:url" content={shareUrl} />
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={description} />
-        <meta
-          property="og:image"
-          content="https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg"
-        />
+        <meta property="og:title" content={shareTitle} />
+        <meta property="og:description" content={shareDescription} />
+        <meta property="og:image" content={shareImage} />
         <meta property="twitter:url" content={shareUrl} />
-        <meta property="twitter:title" content={title} />
-        <meta property="twitter:description" content={description} />
-        <meta
-          property="twitter:image"
-          content="https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg"
-        />
+        <meta property="twitter:title" content={shareTitle} />
+        <meta property="twitter:description" content={shareDescription} />
+        <meta property="twitter:image" content={shareImage} />
       </Helmet>
       <Box
         sx={{
@@ -61,19 +50,28 @@ const SocialShare = () => {
           gap: "10px",
         }}
       >
-        <FacebookShareButton url={shareUrl} quote={description} hashtag={title}>
+        <FacebookShareButton
+          url={shareUrl}
+          quote={shareQuote}
+          hashtag={shareHashtag}
+        >
           <FacebookIcon size={32} round />
         </FacebookShareButton>
-
-        <TwitterShareButton url={shareUrl} title={title}>
+        <TwitterShareButton url={shareUrl} title={shareTitle}>
           <TwitterIcon size={32} round />
         </TwitterShareButton>
-
-        <LinkedinShareButton url={shareUrl} title={title} summary={description}>
+        <LinkedinShareButton
+          url={shareUrl}
+          title={shareTitle}
+          summary={shareDescription}
+        >
           <LinkedinIcon size={32} round />
         </LinkedinShareButton>
-
-        <EmailShareButton url={shareUrl} subject={title} body={description}>
+        <EmailShareButton
+          url={shareUrl}
+          subject={shareTitle}
+          shareBody={shareBody}
+        >
           <EmailIcon size={32} round />
         </EmailShareButton>
       </Box>
