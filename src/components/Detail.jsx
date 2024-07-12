@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import axios from "axios";
 import SocialShare from "./SocialShare";
+import Meta from "./Meta";
 
 const Detail = () => {
   const [data, setData] = useState(null);
@@ -35,19 +36,13 @@ const Detail = () => {
 
   return (
     <>
-      <Helmet>
-        <title>{title}</title>
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={shareUrl} />
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={description} />
-        <meta property="og:image" content={image} />
-        <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content={shareUrl} />
-        <meta property="twitter:title" content={title} />
-        <meta property="twitter:description" content={description} />
-        <meta property="twitter:image" content={image} />
-      </Helmet>
+      <Meta
+        mainTitle={title}
+        shareUrl={window.location.href}
+        shareTitle={title}
+        shareDescription={description}
+        shareImage={image}
+      />
       <div className="flex flex-col items-center justify-center border p-4">
         <h2 className="text-lg font-medium text-black">{title}</h2>
         <p className="text-gray-700">{description}</p>

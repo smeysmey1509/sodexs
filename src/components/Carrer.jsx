@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet-async";
 import SocialShare from "./SocialShare";
 import asd from "../assets/asd.webp";
 import axios from "axios";
+import Meta from "./Meta";
 
 const Carrer = () => {
   const [data, setData] = useState([]);
@@ -21,37 +22,9 @@ const Carrer = () => {
     fetchData();
   }, []);
 
-  const splitString = (str) => {
-    const cleanedString = str
-      .replace(/[!@#$%^&*()_+\-=\[\]{};':"\\|<>\/?,.]+/g, "-")
-      .toLowerCase();
-
-    const splitResult = cleanedString.split(/\s+/).filter((item) => item);
-
-    return splitResult.join("-");
-  };
-
   return (
     <>
-      <Helmet>
-        <title>Career</title>
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={window.location.href} />
-        <meta property="og:title" content="Career" />
-        <meta
-          property="og:description"
-          content="Description of the career page"
-        />
-        <meta property="og:image" content={asd} />
-        <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content={window.location.href} />
-        <meta property="twitter:title" content="Career" />
-        <meta
-          property="twitter:description"
-          content="Description of the career page"
-        />
-        <meta property="twitter:image" content={asd} />
-      </Helmet>
+      <Meta mainTitle='Carrer' shareUrl={window.location.href} shareTitle='Carrer'/>
       <div className="flex flex-col gap-4 items-center justify-center border">
         <h2 className="p-4 border">Welcome to Career</h2>
         <SocialShare shareUrl={window.location.href} />
