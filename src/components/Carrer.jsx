@@ -24,7 +24,11 @@ const Carrer = () => {
 
   return (
     <>
-      <Meta mainTitle='Carrer' shareUrl={window.location.href} shareTitle='Carrer'/>
+      <Meta
+        mainTitle="Carrer"
+        shareUrl={window.location.href}
+        shareTitle="Carrer"
+      />
       <div className="flex flex-col gap-4 items-center justify-center border">
         <h2 className="p-4 border">Welcome to Career</h2>
         <SocialShare shareUrl={window.location.href} />

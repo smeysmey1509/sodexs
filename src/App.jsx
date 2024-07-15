@@ -1,15 +1,16 @@
 import React, { lazy, Suspense } from "react";
+import { HelmetProvider } from "react-helmet-async";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-const ShowRenderedHTML = lazy(() => import("./components/ShowRenderedHTML"));
 const Home = lazy(() => import("./components/Home"));
 const Carrer = lazy(() => import("./components/Carrer"));
 const About = lazy(() => import("./components/About"));
 const Detail = lazy(() => import("./components/Detail"));
+const AboutChild = lazy(() => import("./components/AboutChild"));
 
 const App = () => {
   return (
-    <ShowRenderedHTML>
+    <HelmetProvider>
       <Router>
         <Suspense
           fallback={
@@ -23,10 +24,11 @@ const App = () => {
             <Route path="/carrer" element={<Carrer />} />
             <Route path="/carrer/:id" element={<Detail />} />
             <Route path="/about" element={<About />} />
+            <Route path="/about/:id" element={<AboutChild />} />
           </Routes>
         </Suspense>
       </Router>
-    </ShowRenderedHTML>
+    </HelmetProvider>
   );
 };
 
