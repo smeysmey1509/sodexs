@@ -7,9 +7,6 @@ const Home = () => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [selectedProductId, setSelectedProductId] = useState(null);
-  useEffect(() => {
-    fetchData();
-  }, []);
 
   const fetchData = () => {
     axios
@@ -17,6 +14,10 @@ const Home = () => {
       .then((response) => setData(response.data))
       .catch((error) => console.error(error));
   };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   const togglePopup = (productId = null) => {
     setSelectedProductId(productId);
@@ -53,6 +54,16 @@ const Home = () => {
       .catch((error) => console.error(error));
   };
 
+  const deleteProduct = (id) => {
+    axios
+      .delete(`https://fakestoreapi.com/products/${id}`)
+      .then(() => {
+        const updatedProducts = data.filter((product) => product.id !== id);
+        setData(updatedProducts);
+      })
+      .catch((error) => console.error(error));
+  };
+
   const handleFormSubmit = (e) => {
     e.preventDefault();
     if (selectedProductId) {
@@ -74,17 +85,6 @@ const Home = () => {
     togglePopup();
   };
 
-  // Delete a product
-  const deleteProduct = (id) => {
-    axios
-      .delete(`https://fakestoreapi.com/products/${id}`)
-      .then(() => {
-        const updatedProducts = data.filter((product) => product.id !== id);
-        setData(updatedProducts);
-      })
-      .catch((error) => console.error(error));
-  };
-
   return (
     <>
       <div className="text-gray-900 bg-gray-200">
@@ -92,6 +92,7 @@ const Home = () => {
           <button
             className="text-1xl p-2 bg-black text-white"
             onClick={() => togglePopup()}
+            data-testid="Add"
           >
             Add
           </button>
@@ -113,13 +114,15 @@ const Home = () => {
                       type="button"
                       className="mr-3 text-sm bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline"
                       onClick={() => togglePopup(product.id)}
+                      data-testid="Edit"
                     >
-                      Update
+                      Edit
                     </button>
                     <button
                       type="button"
                       className="text-sm bg-red-500 hover:bg-red-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline"
                       onClick={() => deleteProduct(product.id)}
+                      data-testid="Delete"
                     >
                       Delete
                     </button>
@@ -131,7 +134,10 @@ const Home = () => {
         </div>
       </div>
       {popup && (
-        <div className="w-full h-full flex items-center justify-center fixed top-0 left-0 bg-gray-800 bg-opacity-50">
+        <div
+          className="w-full h-full flex items-center justify-center fixed top-0 left-0 bg-gray-800 bg-opacity-50"
+          data-testid="Add"
+        >
           <form className="bg-white p-4 rounded" onSubmit={handleFormSubmit}>
             <div className="mb-2">
               <label>Name:</label>
@@ -141,6 +147,7 @@ const Home = () => {
                 onChange={(e) => setName(e.target.value)}
                 required
                 className="border border-gray-400 p-2 w-full"
+                placeholder="Name"
               />
             </div>
             <div className="mb-2">
@@ -151,11 +158,13 @@ const Home = () => {
                 onChange={(e) => setDescription(e.target.value)}
                 required
                 className="border border-gray-400 p-2 w-full"
+                placeholder="Description"
               />
             </div>
             <button
               type="submit"
               className="bg-blue-500 text-white p-2 rounded"
+              data-testid="Submit"
             >
               {selectedProductId ? "Update" : "Submit"}
             </button>
