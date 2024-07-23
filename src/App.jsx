@@ -1,6 +1,7 @@
 import React, { lazy, Suspense } from "react";
 import { HelmetProvider } from "react-helmet-async";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import FormDesign from "./components/FormDesign";
 
 const Home = lazy(() => import("./components/Home"));
 const Carrer = lazy(() => import("./components/Carrer"));
@@ -23,8 +24,9 @@ const App = () => {
             <Route path="/" element={<Home />} />
             <Route path="/carrer" element={<Carrer />} />
             <Route path="/carrer/:id" element={<Detail />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/about/:id" element={<AboutChild />} />
+            {/* <Route path="/about" element={<About />} />
+            <Route path="/about/:id" element={<AboutChild />} /> */}
+            <Route path="/formdesign" element={<FormDesign />} />
           </Routes>
         </Suspense>
       </Router>

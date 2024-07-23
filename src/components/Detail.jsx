@@ -2,8 +2,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import SocialShare from "./SocialShare";
-import Meta from "./Meta";
+import SocialShare, { Metadata } from "./SocialShare";
+import Meta from "../components/SocialShare";
 
 const Detail = () => {
   const [data, setData] = useState(null);
@@ -35,7 +35,7 @@ const Detail = () => {
 
   return (
     <>
-      <Meta
+      <Metadata
         mainTitle={title}
         shareUrl={window.location.href}
         shareTitle={title}

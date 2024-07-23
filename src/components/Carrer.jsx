@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet-async";
 import SocialShare from "./SocialShare";
 import asd from "../assets/asd.webp";
 import axios from "axios";
-import Meta from "./Meta";
+import Meta from "../components/SocialShare";
 
 const Carrer = () => {
   const [data, setData] = useState([]);
