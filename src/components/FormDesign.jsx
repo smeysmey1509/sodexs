@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import ContactForm from "./ContactForm";
-import { PostApi } from "./APIs/FullAPI";
 
 const FormDesign = () => {
   const [formData, setFormData] = useState({
@@ -16,17 +15,15 @@ const FormDesign = () => {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({
-     ...formData,
+      ...formData,
       [name]: value,
     });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    ContactForm(formData)
+    ContactForm(formData);
   };
-
-//   console.log("responeresponerespone", formData);
 
   return (
     <div className="max-w-md mx-auto mt-10">
